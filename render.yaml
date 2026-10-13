@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: farmdirect-backend
+    runtime: docker
+    plan: free
+    dockerContext: ./backend
+    dockerfilePath: ./backend/Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        sync: false
+      - key: SPRING_DATASOURCE_USERNAME
+        sync: false
+      - key: SPRING_DATASOURCE_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: ADMIN_EMAIL
+        value: admin@farmdirect.com
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: SPRING_JPA_DDL_AUTO
+        value: update
